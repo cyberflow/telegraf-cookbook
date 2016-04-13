@@ -9,3 +9,4 @@ source_url 'https://github.com/NorthPage/telegraf-cookbook'
 
 depends 'yum'
 depends 'apt'
+depends 'compat_resource'
