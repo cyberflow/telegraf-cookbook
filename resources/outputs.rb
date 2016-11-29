@@ -34,6 +34,8 @@ action :create do
   end
 
   chef_gem 'toml-rb' do
+    source node['telegraf']['rubysource']
+    clear_sources true
     version '~> 0.3.0'
     compile_time true if respond_to?(:compile_time)
   end
@@ -42,6 +44,8 @@ action :create do
 
   service "telegraf_#{new_resource.service_name}" do
     service_name 'telegraf'
+    retries 2
+    retry_delay 5
     action :nothing
   end
 
